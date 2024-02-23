@@ -1,0 +1,67 @@
+@use 'colors' as c;
+
+a {
+	text-decoration: none;
+	color: c.$text-color;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+.pb {
+	padding: 4em 0;
+}
+
+.pb2 {
+	padding: 2em 0;
+}
+
+.mb {
+	margin: 2em 0;
+}
+
+.fwn {
+	font-weight: normal;
+}
+
+h1,
+h2,
+h3 {
+	position: relative;
+	z-index: 1;
+}
+
+.header {
+	text-align: center;
+	color: c.$bg-color;
+
+	h1,
+	h2 {
+		font-size: 3rem;
+		font-weight: normal;
+	}
+
+	.universal-span {
+		font-weight: bold;
+	}
+}
+
+.section__header {
+	padding: 0 0.5em;
+	text-align: center;
+
+	&--text {
+		margin-top: 0.5em;
+		font-weight: normal;
+	}
+}
+
+@media (min-width: 768px) {
+	h1,
+	h2 {
+		font-size: 4.6rem;
+	}
+}

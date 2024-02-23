@@ -1,0 +1,541 @@
+@use 'components' as *;
+@use 'colors' as c;
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body,
+button {
+	font-family: 'Poppins', sans-serif;
+}
+
+body {
+	font-size: 1.6rem;
+	color: c.$text-color;
+	background-color: c.$bg-color;
+}
+
+.nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: c.$bg-color;
+	z-index: 100;
+
+	&__container {
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1em;
+		width: 100%;
+		height: 60px;
+	}
+
+	&__logo {
+		font-size: 2.6rem;
+		font-weight: bold;
+	}
+
+	&__menu {
+		position: absolute;
+		top: 60px;
+		left: 0;
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-direction: column;
+		width: 100%;
+		height: calc(100dvh - 60px);
+		translate: 120% 0;
+		transition: translate 0.3s;
+		background-color: c.$bg-color;
+
+		&--active {
+			translate: 0;
+		}
+	}
+
+	&__menu-link {
+		font-size: 1.8rem;
+	}
+
+	&__bars {
+		position: absolute;
+		right: 0.5em;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 5px;
+		width: 50px;
+		height: 50px;
+		border: none;
+		background: none;
+
+		&--active {
+			.nav__bars-line:nth-child(1) {
+				rotate: -45deg;
+				translate: 0 8px;
+			}
+
+			.nav__bars-line:nth-child(2) {
+				opacity: 0;
+			}
+
+			.nav__bars-line:nth-child(3) {
+				rotate: 45deg;
+				translate: 0 -8px;
+			}
+		}
+	}
+
+	&__bars-line {
+		width: 30px;
+		height: 3px;
+		background-color: c.$black;
+		border-radius: 10px;
+		transition: rotate 0.3s, translate 0.3s 0.1s, opacity 0.3s;
+	}
+}
+
+.header {
+	margin-top: 60px;
+	width: 100%;
+	overflow: hidden;
+
+	&__slider {
+		display: flex;
+		width: 200%;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	&__slide {
+		width: 100%;
+	}
+
+	&__slide-photo {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		height: clamp(380px, 400px, 420px);
+		background-size: cover;
+		background-position: center;
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			background-color: c.$hero-color;
+		}
+
+		&--one {
+			background-image: url('../../dist/img/header-big.webp');
+		}
+
+		&--two {
+			background-image: url('../../dist/img/header-two.webp');
+		}
+	}
+
+	&__btns {
+		margin: 1.5em;
+	}
+
+	&__btn {
+		width: 40px;
+		height: 10px;
+		border: none;
+		border-radius: 10px;
+		background-color: c.$black;
+		transition: background-color 0.3s ease-in-out;
+
+		&:nth-child(1) {
+			margin-right: 0.5em;
+			background-color: c.$primary;
+		}
+
+		&:nth-child(2) {
+			margin-left: 0.5em;
+		}
+	}
+}
+
+.offers {
+	&__container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 2.5em;
+	}
+
+	&__link {
+		position: relative;
+		left: 50%;
+		display: block;
+		margin: 4em 0 2em 0;
+		width: 160px;
+		text-align: center;
+		translate: -50% 0;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: -1.2em;
+			left: 50%;
+			width: 110%;
+			height: 10px;
+			border-radius: 10px;
+			background-color: c.$primary;
+			translate: -50% 0;
+		}
+	}
+
+	&__card {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: column;
+		margin-top: 2em;
+		padding: 1em;
+		width: clamp(300px, 80%, 340px);
+		height: 280px;
+		background-color: c.$wine-bg;
+	}
+
+	&__card-photo {
+		width: 150px;
+		height: 150px;
+		background-size: cover;
+
+		&--one {
+			background-image: url('../../dist/img/wine_1.png.webp');
+		}
+
+		&--two {
+			background-image: url('../../dist/img/wine_2.png.webp');
+		}
+
+		&--three {
+			background-image: url('../../dist/img/wine_3.png.webp');
+		}
+	}
+
+	&__card-title {
+		font-weight: bold;
+	}
+}
+
+.footnote {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	height: 50dvh;
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-image: url('../../dist/img/wine-opinion-big.webp');
+
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		background-color: c.$hero-color;
+	}
+
+	h2,
+	h3 {
+		font-size: 3.2rem;
+		color: c.$bg-color;
+	}
+
+	h2 {
+		font-weight: normal;
+	}
+}
+
+.opinion {
+	overflow: hidden;
+
+	&__slider {
+		display: flex;
+		transition: transform 0.3s ease-in-out;
+	}
+
+	&__slide {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		min-width: 100%;
+	}
+
+	&__photo {
+		width: 150px;
+		height: 150px;
+		background-size: cover;
+		background-position: center;
+		background-image: url('../../dist/img/opinion-face1.png');
+	}
+
+	&__text {
+		margin: 1.5em 0;
+		padding: 0 1em;
+		text-align: center;
+	}
+
+	&__name {
+		font-weight: bold;
+	}
+
+	&__btns {
+		margin: 2em 0 1em 0;
+		text-align: center;
+	}
+
+	&__btn {
+		margin: 0.5em;
+		width: 30px;
+		height: 10px;
+		border: none;
+		border-radius: 10px;
+		background-color: c.$black;
+
+		&--one {
+			background-color: c.$primary;
+		}
+	}
+}
+
+.blog {
+	background-color: c.$bg-color-three;
+
+	&__container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		gap: 2.5em;
+	}
+
+	&__card {
+		margin-top: 5em;
+		padding: 1em;
+	}
+
+	&__card-photo {
+		position: relative;
+		width: 100%;
+		height: 180px;
+		background-size: cover;
+		background-position: center;
+
+		&::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			background-color: c.$hero-color;
+		}
+
+		&--one {
+			background-image: url('../../dist/img/blog-photo-one.webp');
+		}
+
+		&--two {
+			background-image: url('../../dist/img/blog-photo-two.webp');
+		}
+
+		&--three {
+			background-image: url('../../dist/img/blog-photo-three.webp');
+		}
+	}
+
+	&__card-title {
+		margin: 1em 0 0.5em 0;
+		font-size: 2rem;
+		font-weight: normal;
+	}
+
+	&__card-text {
+		color: #302b21;
+	}
+
+	&__card-info {
+		margin-top: 0.5em;
+		font-weight: bold;
+	}
+}
+
+.footer {
+	&__text {
+		font-size: 2rem;
+		text-align: center;
+	}
+}
+
+@media (min-width: 768px) {
+	.nav {
+		&__container {
+			height: 80px;
+		}
+
+		&__logo {
+			font-size: 3.2rem;
+		}
+
+		&__menu {
+			position: static;
+			justify-content: flex-end;
+			flex-direction: row;
+			width: 50%;
+			height: 100%;
+			translate: 0;
+		}
+
+		&__menu-link:not(:last-child) {
+			margin-right: 1em;
+		}
+
+		&__bars {
+			display: none;
+		}
+	}
+
+	.header {
+		margin: 0 auto;
+		max-width: 1200px;
+
+		&__slide-photo {
+			min-height: 70dvh;
+		}
+	}
+
+	.offers {
+		&__container {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+
+		&__card:last-child {
+			margin-top: 0;
+		}
+	}
+
+	.footnote {
+		h2,
+		h3 {
+			font-size: 3.8rem;
+		}
+	}
+
+	.opinion {
+		&__slide {
+			min-width: 50%;
+		}
+
+		&__btn {
+			&--three {
+				display: none;
+			}
+		}
+	}
+
+	.blog {
+		&__card {
+			width: clamp(240px, 80%, 480px);
+		}
+
+		&__card-photo {
+			height: 250px;
+		}
+	}
+
+	.footer {
+		&__text {
+			font-size: 2.4rem;
+		}
+	}
+}
+
+@media (min-width: 992px) {
+	.nav {
+		&__menu-link {
+			transition: color 0.3s;
+
+			&:not(:last-child) {
+				margin-right: 1.5em;
+			}
+
+			&:hover {
+				color: c.$primary;
+			}
+		}
+	}
+
+	.offers {
+		&__link {
+			transition: color 0.3s;
+
+			&:hover {
+				color: c.$primary;
+			}
+		}
+
+		&__card:last-child {
+			margin-top: 2.5em;
+		}
+	}
+
+	.footnote {
+		h2,
+		h3 {
+			font-size: 4.6rem;
+		}
+	}
+
+	.opinion {
+		&__slider {
+			align-items: center;
+			justify-content: center;
+			gap: 5em;
+		}
+
+		&__slide {
+			min-width: 250px;
+			max-width: 280px;
+		}
+
+		&__btns {
+			display: none;
+		}
+	}
+
+	.blog {
+		&__container {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+	}
+}
