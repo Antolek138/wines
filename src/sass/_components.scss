@@ -5,6 +5,18 @@ a {
 	color: c.$text-color;
 }
 
+.unlocked {
+	overflow: visible;
+	overflow-x: visible;
+	overflow-y: visible;
+}
+
+.blocked {
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
 .wrapper {
 	margin: 0 auto;
 	max-width: 1200px;
