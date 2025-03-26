@@ -379,7 +379,8 @@ body {
 	}
 
 	&__card-text {
-		color: #302b21;
+		// color: #302b21;
+		color: c.$text-color-two;
 	}
 
 	&__card-info {
